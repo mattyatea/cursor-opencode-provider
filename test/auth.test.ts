@@ -1,6 +1,7 @@
 import { describe, it, expect } from "bun:test"
 import {
   isExpiringSoon,
+  isExchangeableApiKey,
   decodeJwtPayload,
   decodeJwtExpiryMs,
   exchangeApiKey,
@@ -15,6 +16,15 @@ import {
 } from "../src/auth.js"
 import { obfuscate, createCursorChecksumHeader } from "../src/protocol/checksum.js"
 import { CURSOR_OAUTH_CLIENT_ID } from "../src/shared.js"
+
+describe("isExchangeableApiKey", () => {
+  it("exchanges legacy and fine-grained keys, but not session tokens", () => {
+    expect(isExchangeableApiKey("crsr_test-key")).toBe(true)
+    expect(isExchangeableApiKey("grok_test-key")).toBe(true)
+    expect(isExchangeableApiKey("eyJ.test.signature")).toBe(false)
+    expect(isExchangeableApiKey("")).toBe(false)
+  })
+})
 
 // ── JWT expiry ──
 

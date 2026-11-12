@@ -69,6 +69,7 @@
 
 ### Fixed
 
+- Exchange fine-grained Cursor API keys beginning with `grok_` instead of sending them as session tokens.
 - Publish CI enables user namespaces so isolation tests pass on ubuntu-latest.
 - Soft-deny background-shell probes no longer keep a tool step open ~5 minutes while Cursor delivers a host note ([#155](https://github.com/oakimov/cursor-opencode-provider/issues/155), [@nkoynov](https://github.com/nkoynov)).
 - Review harness: persistent private storage, re-review resolution, offline eval/ledger checks, `/usr/local/bin` OpenCode in the isolate, GitHub App token scoping, analysis receipts, and Linux orphan reaping ([#156](https://github.com/oakimov/cursor-opencode-provider/pull/156)).

@@ -84,7 +84,7 @@ function base64url(bytes: Uint8Array): string {
 
 /** A raw Cursor API key (as opposed to a JWT already exchanged from one). */
 export function isExchangeableApiKey(value: string): boolean {
-  return value.startsWith("crsr_")
+  return value.startsWith("crsr_") || value.startsWith("grok_")
 }
 
 // ── Mode A: pass-through auth token ──
